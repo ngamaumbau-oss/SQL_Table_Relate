@@ -2,6 +2,8 @@ import sqlite3
 import pandas as pd
 
 # Connect to the database
+# Tables: orderdetails, payments, offices, customers, orders,
+#         productlines, products, employees
 conn = sqlite3.connect('data.sqlite')
 
 # ── Step 1 ─────────────────────────────────────────────────────────────────
