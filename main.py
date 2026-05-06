@@ -22,8 +22,7 @@ df_boston = pd.read_sql("""
 # ── Step 2 ─────────────────────────────────────────────────────────────────
 # Offices with zero employees — rubric requires HAVING with aggregate COUNT
 df_zero_emp = pd.read_sql("""
-    SELECT o.officeCode, o.city,
-           COUNT(e.employeeNumber) AS num_employees
+    SELECT o.officeCode, o.city
     FROM offices o
     LEFT JOIN employees e ON o.officeCode = e.officeCode
     GROUP BY o.officeCode
@@ -86,7 +85,7 @@ df_product_sold = pd.read_sql("""
 """, conn)
 
 # ── Step 8 ─────────────────────────────────────────────────────────────────
-# Number of unique customers per product (market reach)
+# Number of unique customers per product
 df_total_customers = pd.read_sql("""
     SELECT p.productName, p.productCode,
            COUNT(DISTINCT o.customerNumber) AS numpurchasers
@@ -109,7 +108,7 @@ df_customers = pd.read_sql("""
 """, conn)
 
 # ── Step 10 ────────────────────────────────────────────────────────────────
-# Employees who sold products ordered by fewer than 20 customers (subquery)
+# Employees who sold products ordered by fewer than 20 customers
 df_under_20 = pd.read_sql("""
     SELECT DISTINCT e.employeeNumber, e.firstName, e.lastName,
                     o.city, o.officeCode
