@@ -26,7 +26,6 @@ df_zero_emp = pd.read_sql("""
     FROM offices o
     LEFT JOIN employees e ON o.officeCode = e.officeCode
     GROUP BY o.officeCode
-    HAVING COUNT(e.employeeNumber) = 0
 """, conn)
 
 # ── Step 3 ─────────────────────────────────────────────────────────────────
