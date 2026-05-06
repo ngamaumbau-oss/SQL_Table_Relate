@@ -1,5 +1,11 @@
 import sqlite3
 import pandas as pd
+import os
+
+# Connect to the database safely for CodeGrade
+BASE_DIR = os.path.dirname(os.path.abspath("C:\Moringa\Assignments\Module3_SQLTables-main\data.sqlite"))
+DB_PATH = os.path.join(BASE_DIR, 'data.sqlite')
+conn = sqlite3.connect(DB_PATH)
 
 # Connect to the database
 # Tables: orderdetails, payments, offices, customers, orders,
