@@ -1,16 +1,14 @@
+# Run this cell without changes
+
+# SQL Library and Pandas Library
 import sqlite3
 import pandas as pd
-import os
-
-# Connect to the database safely for CodeGrade
-BASE_DIR = os.path.dirname(os.path.abspath("C:\Moringa\Assignments\Module3_SQLTables-main\data.sqlite"))
-DB_PATH = os.path.join(BASE_DIR, 'data.sqlite')
-conn = sqlite3.connect(DB_PATH)
 
 # Connect to the database
-# Tables: orderdetails, payments, offices, customers, orders,
-#         productlines, products, employees
 conn = sqlite3.connect('data.sqlite')
+
+pd.read_sql("""SELECT * FROM sqlite_master""", conn)
+
 
 # ── Step 1 ─────────────────────────────────────────────────────────────────
 # Boston employees: first name, last name, job title
