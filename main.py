@@ -19,14 +19,12 @@ df_boston = pd.read_sql("""
 
 # Step 2
 df_zero_emp = pd.read_sql("""
-    SELECT o.officeCode, o.city,
-           COUNT(e.employeeNumber) AS num_employees
+    SELECT o.officeCode, o.city
     FROM offices o
     LEFT JOIN employees e ON o.officeCode = e.officeCode
     GROUP BY o.officeCode
     HAVING COUNT(e.employeeNumber) = 0;
 """, conn)
-
 # -------------------- Part 2: Type of Join --------------------
 
 # Step 3
